@@ -1,0 +1,6 @@
+
+aicte-verify-project-foundation/node_modules/
+aicte-verify-project-foundation/.next/
+aicte-verify-project-foundation/.env
+aicte-verify-project-foundation/.env.*
+!aicte-verify-project-foundation/.env.example

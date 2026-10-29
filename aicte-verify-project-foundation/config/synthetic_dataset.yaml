@@ -1,0 +1,152 @@
+version: 1
+updated_at: "2026-01-10"
+users:
+  - email: admin@aicte-verify.demo
+    full_name: System Admin
+    role: admin
+    password: Admin@123
+    mfa_enabled: false
+  - email: officer1@aicte-verify.demo
+    full_name: Regional Officer One
+    role: officer
+    password: Officer@123
+    mfa_enabled: false
+institutions:
+  - code: INST-DEL-001
+    name: Delhi Institute of Technology and Research
+    state: Delhi
+    status: active
+    users:
+      - email: nodal.delhi@aicte-verify.demo
+        full_name: Delhi Nodal Officer
+        role: institution
+        password: Inst@123
+        mfa_enabled: false
+  - code: INST-MH-002
+    name: Pune School of Engineering Sciences
+    state: Maharashtra
+    status: active
+    users:
+      - email: nodal.pune@aicte-verify.demo
+        full_name: Pune Compliance Lead
+        role: institution
+        password: Inst@123
+        mfa_enabled: false
+  - code: INST-UP-003
+    name: Lucknow College of Emerging Technologies
+    state: Uttar Pradesh
+    status: active
+    users:
+      - email: nodal.lucknow@aicte-verify.demo
+        full_name: Lucknow Verification Officer
+        role: institution
+        password: Inst@123
+        mfa_enabled: false
+  - code: INST-KA-004
+    name: Bengaluru Institute of Applied AI
+    state: Karnataka
+    status: active
+    users:
+      - email: nodal.blr@aicte-verify.demo
+        full_name: Bengaluru Academic Coordinator
+        role: institution
+        password: Inst@123
+        mfa_enabled: false
+
+records:
+  - institution_code: INST-DEL-001
+    record_type: accreditation
+    reference_number: NBA-DEL-2025-1001
+    issue_date: "2025-04-01"
+    expiry_date: "2028-03-31"
+    status: valid
+    payload:
+      accredited_programmes:
+        - CSE
+        - ECE
+      approved_intake:
+        CSE: 180
+        ECE: 120
+  - institution_code: INST-MH-002
+    record_type: previous_eoa
+    reference_number: AICTE-EOA-2025-MH-7788
+    issue_date: "2025-05-10"
+    expiry_date: "2026-05-09"
+    status: valid
+    payload:
+      approved_programmes:
+        - MECH
+        - CIVIL
+  - institution_code: INST-UP-003
+    record_type: ter_payment
+    reference_number: TER-UP-5567
+    issue_date: "2026-01-12"
+    expiry_date: null
+    status: paid
+    payload:
+      amount: 245000
+      gateway_ref: PG-UP-87623
+  - institution_code: INST-KA-004
+    record_type: noc
+    reference_number: NOC-KA-2024-9931
+    issue_date: "2024-02-05"
+    expiry_date: "2025-02-04"
+    status: expired
+    payload:
+      issuer: State Technical Education Board
+
+document_templates:
+  - document_type: affidavit
+    file_name: affidavit_signed.pdf
+    file_uri: synthetic://docs/affidavit_signed.pdf
+    flags:
+      is_tampered: false
+      is_expired: false
+      is_missing: false
+      is_mismatched: false
+    verification_status: verified
+  - document_type: accreditation_certificate
+    file_name: accreditation_scan.jpg
+    file_uri: synthetic://docs/accreditation_scan.jpg
+    flags:
+      is_tampered: false
+      is_expired: false
+      is_missing: false
+      is_mismatched: false
+    verification_status: verified
+  - document_type: noc
+    file_name: noc_letter_expired.pdf
+    file_uri: synthetic://docs/noc_letter_expired.pdf
+    flags:
+      is_tampered: false
+      is_expired: true
+      is_missing: false
+      is_mismatched: false
+    verification_status: expired
+  - document_type: previous_eoa
+    file_name: previous_eoa_mismatch.pdf
+    file_uri: synthetic://docs/previous_eoa_mismatch.pdf
+    flags:
+      is_tampered: false
+      is_expired: false
+      is_missing: false
+      is_mismatched: true
+    verification_status: mismatch
+  - document_type: faculty_record
+    file_name: faculty_roster_tampered.png
+    file_uri: synthetic://docs/faculty_roster_tampered.png
+    flags:
+      is_tampered: true
+      is_expired: false
+      is_missing: false
+      is_mismatched: false
+    verification_status: manual_review_required
+  - document_type: ter_payment_receipt
+    file_name: ter_receipt_missing.pdf
+    file_uri: synthetic://docs/ter_receipt_missing.pdf
+    flags:
+      is_tampered: false
+      is_expired: false
+      is_missing: true
+      is_mismatched: false
+    verification_status: pending

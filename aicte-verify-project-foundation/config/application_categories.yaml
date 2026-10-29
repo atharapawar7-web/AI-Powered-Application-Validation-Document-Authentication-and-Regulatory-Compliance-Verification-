@@ -1,0 +1,84 @@
+version: 1
+updated_at: "2026-01-10"
+categories:
+  - key: eoa_extension
+    name: Extension of Approval (EoA)
+    description: Validate EoA extension requests and supporting evidence.
+    checklist:
+      - item_key: affidavit_notarized
+        title: Notarized affidavit
+        description: Institution affidavit signed and notarized.
+        required: true
+        document_type: affidavit
+        validation_hints:
+          expiry_required: false
+          source_check: issuer_portal_lookup
+      - item_key: accreditation_certificate
+        title: Accreditation certificate
+        description: Current accreditation with valid period.
+        required: true
+        document_type: accreditation_certificate
+        validation_hints:
+          expiry_required: true
+          source_check: qr_or_digilocker
+      - item_key: noc_state_authority
+        title: NOC from state authority
+        description: NOC for the current session.
+        required: true
+        document_type: noc
+        validation_hints:
+          expiry_required: true
+          source_check: issuer_portal_lookup
+      - item_key: previous_eoa
+        title: Previous EoA letter
+        description: Last approved EoA letter from AICTE.
+        required: true
+        document_type: previous_eoa
+        validation_hints:
+          expiry_required: false
+          source_check: aicte_registry
+      - item_key: faculty_roster
+        title: Faculty roster
+        description: Faculty and designation details.
+        required: true
+        document_type: faculty_record
+        validation_hints:
+          expiry_required: false
+          source_check: internal_record
+      - item_key: ter_payment_receipt
+        title: TER payment receipt
+        description: Payment record for TER filing.
+        required: true
+        document_type: ter_payment_receipt
+        validation_hints:
+          expiry_required: false
+          source_check: payment_gateway_mock
+
+  - key: new_programme_addition
+    name: New Programme / Intake Addition
+    description: Verify eligibility and approvals for programme additions.
+    checklist:
+      - item_key: board_resolution
+        title: Governing body resolution
+        description: Resolution approving proposed programme changes.
+        required: true
+        document_type: board_resolution
+        validation_hints:
+          expiry_required: false
+          source_check: institution_record
+      - item_key: infrastructure_plan
+        title: Infrastructure plan and capacity
+        description: Floor plan and lab/classroom readiness evidence.
+        required: true
+        document_type: infrastructure_plan
+        validation_hints:
+          expiry_required: false
+          source_check: manual_review
+      - item_key: faculty_recruitment_plan
+        title: Faculty recruitment plan
+        description: Hiring and qualification details for added intake.
+        required: true
+        document_type: faculty_recruitment_plan
+        validation_hints:
+          expiry_required: false
+          source_check: internal_record
